@@ -182,7 +182,7 @@ html {
 
 .error-input{
     border: 1px solid red!important;
-    animation: scalePulse 0.4s ease;
+    animation: rotate 0.4s ease;
 }
 
 @keyframes scalePulse {
