@@ -29,13 +29,11 @@ form.addEventListener("submit", async function (event) {
 
   cleanup();
 
-  alert("Messaggio inviato con successo!");
-
-  // const response = await fetch("https://localhost:7139/api/Logs/formadata", {
-  //   method: "POST",
-  //   body: formData,
-  // })
-  // .then(() => alert("Messaggio inviato con successo"));
+  const response = await fetch("https://localhost:7139/api/Logs/formadata", {
+    method: "POST",
+    body: formData,
+  }).then(() => showMessage())
+  .error(() => console.log("server error"));
 });
 
 function validate(nome, lastname, email, dob, message) {
@@ -87,8 +85,22 @@ document
     }
   });
 
-const input = document.getElementById("name");
-input.addEventListener("click", function () {
-  console.log("Input cliccato!");
-  this.classList.remove("error-input");
+const inputs = document.querySelectorAll("input, textarea");
+inputs.forEach(input => {
+  input.addEventListener("click", function () {
+    console.log("Input cliccato!");
+
+    // Rimuove la classe da tutti gli input
+    inputs.forEach(i => i.classList.remove("error-input"));
+  });
 });
+
+function showMessage() {
+  const popup = document.getElementById("popup");
+  popup.classList.add("show");
+
+  // Nasconde il popup dopo 5 secondi
+  setTimeout(() => {
+    popup.classList.remove("show");
+  }, 5000);
+}
