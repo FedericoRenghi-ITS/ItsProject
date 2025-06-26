@@ -34,6 +34,7 @@ form.addEventListener("submit", async function (event) {
     body: formData,
   }).then(() => showMessage())
   .error(() => console.log("server error"));
+  
 });
 
 function validate(nome, lastname, email, dob, message) {
