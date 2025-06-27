@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Contatore</title>
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+    button{
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    #output {
+      font-size: 24px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <h1>Contatore</h1>
+    <button onclick="increment()">+</button>
+    <button onclick="decrement()">-</button>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    var count = 0;
+    document.getElementById('output').innerHTML = count
+    function increment() {
+      document.getElementById('output').innerHTML = ++count;
+    }
+    function decrement(){
+      document.getElementById('output').innerHTML = --count;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Indovina il Numero</title>
+</head>
+<body>
+  <h1>Indovina il Numero tra 1 e 10</h1>
+  <input type="number" id="tentativo" placeholder="Il tuo numero">
+  <button onclick="gioca()">Verifica</button>
+  <div id="risultato"></div>
+
+  <script>
+    const numeroSegreto = Math.floor(Math.random() * 10) + 1;
+
+    function gioca() {
+      const tentativo = Number(document.getElementById('tentativo').value);
+      const messaggio = tentativo === numeroSegreto ? "Bravo! Hai indovinato!" : "Sbagliato! Riprova.";
+      document.getElementById('risultato').textContent = messaggio;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Pari o Dispari</title>
+</head>
+<body>
+  <h1>Verifica se un numero è pari o dispari</h1>
+  <input type="number" id="numero" placeholder="Inserisci un numero">
+  <button onclick="verifica()">Verifica</button>
+  <div id="risultato"></div>
+
+  <script>
+    function verifica() {
+      const numero = Number(document.getElementById('numero').value);
+      const risultato = numero % 2 === 0 ? "Pari" : "Dispari";
+      document.getElementById('risultato').textContent = "Il numero è: " + risultato;
+    }
+  </script>
+</body>
+</html>

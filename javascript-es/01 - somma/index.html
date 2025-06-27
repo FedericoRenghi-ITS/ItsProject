@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/01 - somma/styles/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2 style="margin: 10px auto;">SOMMA</h2>
+      <div class="input-container">
+        <input
+          class="input-number"
+          type="number"
+          id="num1"
+          placeholder="Inserisci il primo numero"
+        />
+        <input
+          class="input-number"
+          type="number"
+          id="num2"
+          placeholder="Inserisci il secondo numero"
+        />
+      </div>
+
+      <div class="button-container">
+        <button class="btn btn-primary" onclick="sum()">Somma</button>
+        <button class="btn btn-secondary" onclick="reset()">Reset</button>
+      </div>
+
+      <p id="result"></p>
+    </div>
+
+    <script>
+      function sum() {
+        const num1 = parseFloat(document.getElementById("num1").value);
+        const num2 = parseFloat(document.getElementById("num2").value);
+        const result = num1 + num2;
+
+        document.getElementById("result").innerText = `La somma è: ${result}`;
+
+        document.getElementById("result").style.color = "red";
+      }
+      function reset() {
+        // document.getElementById("num1").value = "";
+        document.querySelector("#num1").value = "";
+        document.getElementById("num2").value = "";
+        document.getElementById("result").innerText = "";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Controllo Età</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    input {
+      margin: 5px 0;
+      padding: 8px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Controllo Età</h1>
+
+  <input type="number" id="eta" placeholder="Inserisci la tua età">
+  <br>
+  <button class="btn btn-primary" onclick="checkAge()">Verifica</button>
+
+  <div id="result"></div>
+
+  <script>
+    function checkAge() {
+      const eta = Number(document.getElementById('eta').value);
+
+      if (isNaN(eta) || eta <= 0) {
+        document.getElementById('result').textContent = "Per favore inserisci un'età valida.";
+        return;
+      }
+
+      const messaggio = eta >= 18 ? "Sei maggiorenne." : "Sei minorenne.";
+      document.getElementById('result').textContent = messaggio;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Oggetto Persona</title>
+</head>
+<body>
+  <h1>Informazioni su una persona</h1>
+  <button onclick="show()">Mostra Dati</button>
+  <div id="datiPersona"></div>
+
+  <script>
+    function show() {
+      const p = {
+        nome: "Luca",
+        eta: 30,
+        professione: "Sviluppatore"
+      };
+      const output = "Nome: " + p.nome + "<br>" +
+                     "Età: " + p.eta + "<br>" +
+                     "Professione: " + p.professione;
+      document.getElementById('datiPersona').innerHTML = output;
+    }
+  </script>
+</body>
+</html>

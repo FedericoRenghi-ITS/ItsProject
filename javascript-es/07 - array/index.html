@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Array di Nomi</title>
+</head>
+<body>
+  <h1>Stampa un array di nomi</h1>
+  <button onclick="mostraNomi()">Mostra Nomi</button>
+  <ul id="listaNomi"></ul>
+
+  <script>
+    function mostraNomi() {
+      const nomi = ["Anna", "Marco", "Giulia", "Luca"];
+      const lista = document.getElementById('listaNomi');
+      lista.innerHTML = "";
+      for (let i = 0; i < nomi.length; i++) {
+        const li = document.createElement("li");
+        li.textContent = nomi[i];
+        lista.appendChild(li);
+      }
+    }
+  </script>
+</body>
+</html>

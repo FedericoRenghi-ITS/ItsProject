@@ -1,4 +1,4 @@
-let currentPage = 0;
+let currentPage = 1;
 const resultsPerPage = 10;
 
 function loadRecipes(page) {
@@ -6,24 +6,22 @@ function loadRecipes(page) {
 
   //https://spoonacular.com/food-api
 
-  fetch(
-    `https://api.spoonacular.com/recipes/complexSearch?number=${resultsPerPage}&offset=${offset}`,
-    {
-      method: "GET",
-      headers: {
-        "x-api-key": "4158b8f83d194e6991a5b7e753df6aea",
-      },
-    }
-  )
-    .then((response) => response.json())
-    .then((data) => {
+  fetch(`https://dogapi.dog/api/v2/breeds?page[number]=${currentPage}&page[size]=8`, {
+    method: "GET",
+  })
+    .then((response) =>
+      response.json()
+    )
+    .then((result) => {
+      console.log(result);
+      console.log(result.data)
       const container = document.getElementById("recipes-container");
-      const ul = document.createElement("ul");
+      const ul = document.createElement("ol");
       container.innerHTML = "";
 
-      data.results.forEach((recipe) => {
+      result.data.forEach((item) => {
         const li = document.createElement("li");
-        li.innerHTML = `<h3>${recipe.title}</h3>`;
+        li.innerHTML = `<h3>${item.attributes.name}</h3>`;
         ul.appendChild(li);
       });
 
