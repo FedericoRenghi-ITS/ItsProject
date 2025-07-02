@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Operazioni sugli Array in JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    h2 {
+      color: #333;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .output {
+      background: #fff;
+      padding: 10px;
+      border-left: 3px solid #007acc;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Operazioni sugli Array in JavaScript</h1>
+
+  <div id="result"></div>
+
+  <script>
+    const arr = [1, 2, 3, 4, 5, 2];
+
+    console.log("ARRAY -> " + arr)
+
+    //Ricerca
+    console.log("includes(2)", arr.includes(2));
+    console.log("indexOf(2)", arr.indexOf(2));
+    console.log("lastIndexOf(2)", arr.lastIndexOf(2));
+    console.log("find(x => x > 3)", arr.find(x => x > 3)); // restituisce il primo elemento che soddisfa la condizione
+    console.log("findIndex(x => x === 3)", arr.findIndex(x => x === 3));
+    console.log("some(x => x > 4)", arr.some(x => x > 4));
+    console.log("every(x => typeof x === 'number')", arr.every(x => typeof x === 'number'));
+
+    //Aggiunta
+    const addArr = [...arr];
+    addArr.push(6);
+    addArr.unshift(0); //aggiunge in testa
+    addArr.splice(3, 0, 99); // inserisce 99 in posizione 3
+    console.log("push, unshift, splice (aggiunta)", addArr);
+
+    //Rimozione
+    const removeArr = [...addArr];
+    removeArr.pop();    // rimuove ultimo
+    removeArr.shift();  // rimuove primo
+    removeArr.splice(2, 1); // rimuove 1 elemento da index 2
+    console.log("pop, shift, splice (rimozione)", removeArr);
+    console.log("filter(x => x !== 2)", arr.filter(x => x !== 2)); //restituisce un nuovo array con gli elementi del vecchio che soddisfano la condizione
+
+    //Modifica / Trasformazione
+    console.log("map(x => x * 2)", arr.map(x => x * 2));
+
+    //Ordinamento e inversione
+    console.log("sort()", [...arr].sort());
+    console.log("sort2()", [...arr].sort((a, b) => a - b));
+    console.log("sortDesc()", [...arr].sort((a, b) => b - a));
+    console.log("reverse()", [...arr].reverse()); // inverte l' ordine dell'array
+
+    //Copia e unione
+    console.log("slice(1, 4)", arr.slice(1, 4)); //indice start incluso, indice end escluso
+    console.log("concat([6, 7])", arr.concat([6, 7]));
+    console.log("spread [...arr]", [...arr]);
+
+    //Info
+    console.log("length", arr.length);
+    console.log("Array.isArray(arr)", Array.isArray(arr));
+
+    //Altro
+    console.log("join('-')", arr.join("-"));
+    console.log("toString()", arr.toString());
+  </script>
+</body>
+</html>

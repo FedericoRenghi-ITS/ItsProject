@@ -8,8 +8,11 @@
     <h1>Stampa un array di nomi</h1>
     <button onclick="mostraNomi()">Mostra Nomi</button>
     <button id="btn">Mostra Nomi - v2</button>
+    <button id="btn">Mostra Nomi - v3</button>
     <button id="btn-reset">Reset</button>
-    <ul id="listaNomi"></ul>
+    <ul id="listaNomi">
+      <li>valore</li>
+    </ul>
 
     <script>
       function mostraNomi() {
@@ -30,7 +33,7 @@
         const lista = document.getElementById("listaNomi");
         lista.innerHTML = "";
 
-        nomi.forEach((item) => {
+        nomi.forEach((item, i) => {
           const li = document.createElement("li");
           li.textContent = item;
           lista.appendChild(li);

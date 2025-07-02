@@ -6,10 +6,16 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="/javascript-es/01 - somma/styles/style.css" />
+
+    <style>
+      .mio-paragrafo{
+        background-color: yellow;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <h2 style="margin: 10px auto;">SOMMA</h2>
+      <h2 style="margin: 10px auto">SOMMA</h2>
       <div class="input-container">
         <input
           class="input-number"
@@ -28,26 +34,50 @@
       <div class="button-container">
         <button class="btn btn-primary" onclick="sum()">Somma</button>
         <button class="btn btn-secondary" onclick="reset()">Reset</button>
+        <button class="btn btn-primary" onclick="test()">TEST</button>
       </div>
 
-      <p id="result"></p>
+      <p id="result">result</p>
     </div>
 
     <script>
       function sum() {
-        const num1 = parseFloat(document.getElementById("num1").value);
-        const num2 = parseFloat(document.getElementById("num2").value);
-        const result = num1 + num2;
+        const num1 = Number(document.getElementById("num1").value);
+        const num2 = Number(document.getElementById("num2").value);
 
-        document.getElementById("result").innerText = `La somma è: ${result}`;
+        let result = num1 + num2;
+        console.log(result);
 
-        document.getElementById("result").style.color = "red";
+        // document.getElementById("result").innerText = `La somma è: ${result}`;
+
+        const p = document.getElementById("result");
+
+        p.innerText = "La somma è " + result;
+
+        if (result < 0) {
+          p.style.backgroundColor = "red";
+        } else {
+          p.style.color = "green";
+        }
+
+        //document.getElementById("result").style.color = "red";
       }
       function reset() {
         // document.getElementById("num1").value = "";
         document.querySelector("#num1").value = "";
         document.getElementById("num2").value = "";
         document.getElementById("result").innerText = "";
+      }
+
+      function test() {
+        const items = document.querySelectorAll(".mio-paragrafo");
+
+        for (let i = 0; i < items.length; i++) {
+          const p = items[i];
+          console.log(p);
+          p.style.color = "#fc0303";
+          p.style.fontSize = "20px";
+        }
       }
     </script>
   </body>

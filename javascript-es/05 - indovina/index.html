@@ -12,8 +12,8 @@
 
   <script>
     const numeroSegreto = Math.floor(Math.random() * 10) + 1;
-
-    function gioca() {
+console.log(numeroSegreto)
+    const gioca = () => {
       const tentativo = Number(document.getElementById('tentativo').value);
       const messaggio = tentativo === numeroSegreto ? "Bravo! Hai indovinato!" : "Sbagliato! Riprova.";
       document.getElementById('risultato').textContent = messaggio;

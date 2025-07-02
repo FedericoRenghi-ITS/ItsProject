@@ -42,8 +42,12 @@
   <div id="result"></div>
 
   <script>
+    console.log()
     function checkAge() {
       const eta = Number(document.getElementById('eta').value);
+
+      console.log(eta)
+      console.log(isNaN("eta"))
 
       if (isNaN(eta) || eta <= 0) {
         document.getElementById('result').textContent = "Per favore inserisci un'età valida.";

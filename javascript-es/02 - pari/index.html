@@ -8,9 +8,15 @@
   <h1>Verifica se un numero è pari o dispari</h1>
   <input type="number" id="numero" placeholder="Inserisci un numero">
   <button onclick="verifica()">Verifica</button>
-  <div id="risultato"></div>
+  <p id="risultato"></p>
 
   <script>
+    let x = "2"
+    let y = 2;
+
+    console.log(x == y)
+    console.log(x === y)
+
     function verifica() {
       const numero = Number(document.getElementById('numero').value);
       const risultato = numero % 2 === 0 ? "Pari" : "Dispari";
