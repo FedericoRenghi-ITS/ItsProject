@@ -27,7 +27,7 @@ body {
   .input-area{
     display: flex;
     justify-content: center;
-    ap: 10px;
+    gap: 10px;
     margin-bottom: 20px;
   }
 

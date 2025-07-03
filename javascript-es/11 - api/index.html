@@ -59,12 +59,12 @@
 
     // Funzione che aggiorna il contenuto della lista
     function aggiornaLista() {
-  listaNomi.innerHTML = "";
-  nomi.forEach((nome) => {
-    const li = document.createElement("li");
-    const btn = document.createElement("button");
-    btn.textContent = nome;
-    btn.classList.add("nome-btn");
+      listaNomi.innerHTML = "";
+      nomi.forEach((nome) => {
+      const li = document.createElement("li");
+      const btn = document.createElement("button");
+      btn.textContent = nome;
+      btn.classList.add("nome-btn");
 
     // Aggiungi funzionalità toggle spunta
     btn.addEventListener("click", () => {
