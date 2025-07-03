@@ -1,11 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lista Nomi</title>
+  <link rel="stylesheet" href="/styles/api.css" />
+</head>
+<body>
+  <section style="display: flex; flex-direction: column;">
+  <div >
+    <h1 style="text-align: center; padding: 10px;">Lista cose da fare</h1>
+  </div>
+  <div class="top">
+    <div class="input-area"> 
+      <input id="inputNome" type="text" placeholder="Aggiungi cosa da fare" />
+      <button id="btnMostra">Mostra Lista</button>
+      <button id="btnResetta">Resetta</button>
+    </div>
+
+  
+    <ul id="listaNomi"></ul>
+  </div>
+</section>
+  <script>
+    const nomi = [];
+    const inputNome = document.getElementById("inputNome");
+    const btnMostra = document.getElementById("btnMostra");
+    const btnResetta = document.getElementById("btnResetta");
+    const listaNomi = document.getElementById("listaNomi");
+
+    let listaVisibile = false; // Stato della visualizzazione
+
+    // Aggiunta con il tasto Invio
+    inputNome.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        const nome = inputNome.value.trim();
+        if (nome !== "") {
+          nomi.push(nome);
+          inputNome.value = "";
+          if (listaVisibile) {
+            aggiornaLista(); // aggiorna subito se la lista è visibile
+          }
+        }
+      }
+    });
+
+    // Mostra/Nascondi lista
+    btnMostra.addEventListener("click", () => {
+      listaVisibile = !listaVisibile;
+      if (listaVisibile) {
+        aggiornaLista();
+        btnMostra.textContent = "Nascondi Lista";
+      } else {
+        listaNomi.innerHTML = "";
+        btnMostra.textContent = "Mostra Lista";
+      }
+    });
+
+    // Funzione che aggiorna il contenuto della lista
+    function aggiornaLista() {
+  listaNomi.innerHTML = "";
+  nomi.forEach((nome) => {
+    const li = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.textContent = nome;
+    btn.classList.add("nome-btn");
+
+    // Aggiungi funzionalità toggle spunta
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("selezionato");
+      if (btn.classList.contains("selezionato")) {
+        btn.textContent = "✓ " + nome;
+      } else {
+        btn.textContent = nome;
+      }
+    });
+
+    li.appendChild(btn);
+    listaNomi.appendChild(li);
+  });
+}
+
+    // Reset totale (array + lista visibile)
+    btnResetta.addEventListener("click", () => {
+      nomi.length = 0; // svuota l’array
+      listaNomi.innerHTML = ""; // svuota la lista
+      listaVisibile = false;
+      btnMostra.textContent = "Mostra Lista";
+    });
+  </script>
+
+</body>
 </html>
