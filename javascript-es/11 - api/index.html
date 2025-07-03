@@ -24,6 +24,7 @@
 </section>
   <script>
     const nomi = [];
+    const selezionati = {};
     const inputNome = document.getElementById("inputNome");
     const btnMostra = document.getElementById("btnMostra");
     const btnResetta = document.getElementById("btnResetta");
@@ -61,18 +62,25 @@
     function aggiornaLista() {
       listaNomi.innerHTML = "";
       nomi.forEach((nome) => {
-      const li = document.createElement("li");
-      const btn = document.createElement("button");
-      btn.textContent = nome;
-      btn.classList.add("nome-btn");
+        const li = document.createElement("li");
+        const btn = document.createElement("button");
+        btn.classList.add("nome-btn");
 
-    // Aggiungi funzionalità toggle spunta
+        if (selezionati[nome]) {
+          btn.classList.add("selezionato");
+          btn.textContent = "✓ " + nome;
+        } else {
+          btn.textContent = nome;
+        }
+
     btn.addEventListener("click", () => {
       btn.classList.toggle("selezionato");
       if (btn.classList.contains("selezionato")) {
         btn.textContent = "✓ " + nome;
+        selezionati[nome] = true;
       } else {
         btn.textContent = nome;
+        selezionati[nome] = false;
       }
     });
 
@@ -83,10 +91,13 @@
 
     // Reset totale (array + lista visibile)
     btnResetta.addEventListener("click", () => {
-      nomi.length = 0; // svuota l’array
-      listaNomi.innerHTML = ""; // svuota la lista
+      nomi.length = 0;
+      listaNomi.innerHTML = "";
       listaVisibile = false;
       btnMostra.textContent = "Mostra Lista";
+      for (let key in selezionati) {
+        delete selezionati[key];
+      }
     });
   </script>
 
