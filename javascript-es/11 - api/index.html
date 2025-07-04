@@ -43,6 +43,12 @@
             aggiornaLista(); // aggiorna subito se la lista è visibile
           }
         }
+        else {
+          inputNome.classList.add("animazione")
+          setTimeout(() => {
+            inputNome.classList.remove("animazione");
+            }, 400);
+        };
       }
     });
 
@@ -99,6 +105,8 @@
         delete selezionati[key];
       }
     });
+
+    
   </script>
 
 </body>
