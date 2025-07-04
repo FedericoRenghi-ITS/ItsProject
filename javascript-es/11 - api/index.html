@@ -37,6 +37,7 @@
       if (e.key === "Enter") {
         const nome = inputNome.value.trim();
         if (nome !== "") {
+          humpscare(nome)
           nomi.push(nome);
           inputNome.value = "";
           if (listaVisibile) {
@@ -106,6 +107,31 @@
       }
     });
 
+    function humpscare(nome) {
+      const mappaParole = {
+        "banana": "/img/banana.jpg",
+        "boss": "/img/boss.jpg",
+        "miku": "/img/miku.jpg",
+        "goku": "/img/goku.jpg"
+        // Aggiungi altre parole chiave → immagine
+      };
+
+     
+  const chiave = nome.toLowerCase();
+  const pathImg = mappaParole[chiave];
+  if (!pathImg) return;
+
+  const img = document.createElement("img");
+  img.src = pathImg;
+  img.classList.add("humpscare-img");
+
+  document.body.appendChild(img);
+
+  setTimeout(() => {
+    img.classList.add("hide");
+    setTimeout(() => img.remove(), 500);
+  }, 2000);
+}
     
   </script>
 

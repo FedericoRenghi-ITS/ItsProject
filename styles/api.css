@@ -105,3 +105,43 @@ body {
   animation: pulse 0.4s;
 }
 
+
+
+
+.humpscare-img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 50vw;
+  height: auto;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  animation: fadePulse 0.6s ease forwards;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.25));
+}
+
+/* Fade-out */
+.humpscare-img.hide {
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+
+/* Singola pulsazione con leggera sfocatura iniziale */
+@keyframes fadePulse {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+    filter: blur(2px) brightness(1.2);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+    filter: blur(1px) brightness(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0);
+  }
+}
