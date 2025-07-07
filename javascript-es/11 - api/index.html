@@ -30,7 +30,7 @@
     const btnResetta = document.getElementById("btnResetta");
     const listaNomi = document.getElementById("listaNomi");
 
-    const baseUrl = "https://its-todo-api.azurewebsites.net/api";
+    const baseUrl = "https://its-todo-api.azurewebsites.net/api";  //URL dell'api
 
     let listaVisibile = false; // Stato della visualizzazione
 
@@ -50,7 +50,8 @@
           console.error("Errore durante il fetch dei dati:", error);
         });
     });
-      
+
+//-------------------------------------------------------API--------------------------------------------------------------------
     async function fetchData() {
       //https://its-todo-api.azurewebsites.net
       try {
@@ -71,15 +72,40 @@
       }
     }
 
+    async function createTodo(description, isCompleted = false) {
+      try {
+        const response = await fetch(`${baseUrl}/Todo`, {
+          method: "POST",
+          headers: {
+            "x-api-key": "V4PaperYx4Ycc6zucdO6",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            description: description,
+            isCompleted: isCompleted,
+          }),
+        });
 
+        if (!response.ok) {
+          const errorData = await response.text();
+          console.error("Errore dal server:", response.status, errorData);
+        } else {
+          console.log("Todo creato con successo");
+        }
+      } catch (error) {
+        console.error("Errore API:", error);
+      }
+    }
 
+//---------------------------------------------------------------------SITO-----------------------------------------------------------------
     // Aggiunta con il tasto Invio
     inputNome.addEventListener("keydown", function (e) {
       if (e.key === "Enter") {
         const nome = inputNome.value.trim();
         if (nome !== "") {
-          humpscare(nome)
+          humpscare(nome);
           nomi.push(nome);
+          createTodo(nome);
           inputNome.value = "";
           if (listaVisibile) {
             aggiornaLista(); // aggiorna subito se la lista è visibile
@@ -106,7 +132,42 @@
       }
     });
 
-    // Funzione che aggiorna il contenuto della lista
+
+    // Aggiornare la lista
+    function aggiornaLista() {
+      listaNomi.innerHTML = "";
+      fetchData().then((todos) => {
+        console.log(todos)
+        todos.forEach((item) => {
+        const li = document.createElement("li");
+        const btn = document.createElement("button");
+        btn.classList.add("nome-btn");
+
+        if (selezionati[item.description]) {
+          btn.classList.add("selezionato");
+          btn.textContent = "✓ " + item.description;
+        } else {
+          btn.textContent = item.description;
+        }
+
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("selezionato");
+      if (btn.classList.contains("selezionato")) {
+        btn.textContent = "✓ " + item.description;
+        selezionati[item.description] = true;
+      } else {
+        btn.textContent = item.description;
+        selezionati[item.description] = false;
+      }
+    });
+
+    li.appendChild(btn);
+    listaNomi.appendChild(li);
+      });
+  });
+}
+
+    /* Funzione che aggiorna il contenuto della lista
     function aggiornaLista() {
       listaNomi.innerHTML = "";
       nomi.forEach((nome) => {
@@ -135,7 +196,7 @@
     li.appendChild(btn);
     listaNomi.appendChild(li);
   });
-}
+}*/
 
     // Reset totale (array + lista visibile)
     btnResetta.addEventListener("click", () => {

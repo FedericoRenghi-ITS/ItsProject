@@ -89,12 +89,7 @@ function createTodo(description, isCompleted = false) {
       description: description,
       isCompleted: isCompleted,
     }),
-  })
-    // .then((response) => response.json())
-    // .then((result) => {
-    //   console.log(result);
-    // })
-    .catch((error) => console.error("Errore API:", error));
+  }).catch((error) => console.error("Errore API:", error));
 }
 
 function renderTodos(todos) {
