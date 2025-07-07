@@ -108,13 +108,14 @@ body {
 
 
 
+/* Immagine principale */
 .humpscare-img {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
   width: 50vw;
   height: auto;
+  transform: translate(-50%, -50%) scale(1);
   z-index: 1000;
   opacity: 0;
   pointer-events: none;
@@ -122,13 +123,28 @@ body {
   filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.25));
 }
 
-/* Fade-out */
+/* Effetto di sparizione */
 .humpscare-img.hide {
   transition: opacity 0.5s ease;
   opacity: 0;
 }
 
-/* Singola pulsazione con leggera sfocatura iniziale */
+/* Immagine sfocata pulsante (after image) */
+.humpscare-after {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50vw;
+  height: auto;
+  transform: translate(-50%, -50%) scale(1.1);
+  z-index: 999;
+  opacity: 0.4;
+  pointer-events: none;
+  filter: blur(8px) brightness(1.2);
+  animation: afterPulse 0.5s ease-out forwards;
+}
+
+/* Animazione pulsazione */
 @keyframes fadePulse {
   0% {
     opacity: 0;
@@ -143,5 +159,17 @@ body {
   100% {
     transform: translate(-50%, -50%) scale(1);
     filter: blur(0);
+  }
+}
+
+/* Animazione after image */
+@keyframes afterPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0;
   }
 }

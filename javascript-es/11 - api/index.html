@@ -107,31 +107,55 @@
       }
     });
 
+
+
+    const effetti = {
+          "banana":{ img:"/img/banana.jpg",},
+          "boss": {img: "/img/boss.jpg"},
+          "miku": {img:"/img/miku.jpg"},
+          "goku": {img: "/img/goku.jpg", audio: "/sounds/goku-UI.mp3"}
+          
+        };
+
+
     function humpscare(nome) {
-      const mappaParole = {
-        "banana": "/img/banana.jpg",
-        "boss": "/img/boss.jpg",
-        "miku": "/img/miku.jpg",
-        "goku": "/img/goku.jpg"
-        // Aggiungi altre parole chiave → immagine
-      };
+      const defaultAudio = "/sounds/vine-boom.mp3";
 
-     
-  const chiave = nome.toLowerCase();
-  const pathImg = mappaParole[chiave];
-  if (!pathImg) return;
+      const chiave = nome.toLowerCase();
+      const effetto = effetti[chiave];
 
-  const img = document.createElement("img");
-  img.src = pathImg;
-  img.classList.add("humpscare-img");
+      if (!effetto) return;
 
-  document.body.appendChild(img);
+      const pathImg = effetto.img;
+      const pathAudio = effetto.audio || defaultAudio;
 
-  setTimeout(() => {
-    img.classList.add("hide");
-    setTimeout(() => img.remove(), 500);
-  }, 2000);
-}
+      // Riproduzione audio
+      const audio = new Audio(pathAudio);
+      audio.volume = 0.7;
+      audio.play();
+      setTimeout(() => {
+      audio.pause();
+      audio.currentTime = 0; // torna all'inizio per eventuale riuso
+      }, 1000);
+      // Immagine principale
+      const img = document.createElement("img");
+      img.src = pathImg;
+      img.classList.add("humpscare-img");
+
+      // After image
+      const after = document.createElement("img");
+      after.src = pathImg;
+      after.classList.add("humpscare-after");
+
+      document.body.appendChild(after);
+      document.body.appendChild(img);
+
+      setTimeout(() => after.remove(), 500);
+      setTimeout(() => {
+        img.classList.add("hide");
+        setTimeout(() => img.remove(), 500);
+      }, 2000);
+    }
     
   </script>
 
