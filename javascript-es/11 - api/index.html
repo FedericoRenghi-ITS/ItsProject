@@ -30,7 +30,48 @@
     const btnResetta = document.getElementById("btnResetta");
     const listaNomi = document.getElementById("listaNomi");
 
+    const baseUrl = "https://its-todo-api.azurewebsites.net/api";
+
     let listaVisibile = false; // Stato della visualizzazione
+
+// RICARIMENTO PAGINA
+
+    document.addEventListener("DOMContentLoaded", function () {
+      fetchData()
+        .then((todos) => {
+          if (todos) {
+            console.log("Dati ricevuti:", todos);
+            todos.forEach((item) => {
+              nomi.push(item.description);
+            });
+          }
+        })
+        .catch((error) => {
+          console.error("Errore durante il fetch dei dati:", error);
+        });
+    });
+      
+    async function fetchData() {
+      //https://its-todo-api.azurewebsites.net
+      try {
+        const response = await fetch(`${baseUrl}/Todo`, {
+          method: "GET",
+          headers: {
+            "x-api-key": "V4PaperYx4Ycc6zucdO6",
+          },
+        });
+
+        if (!response.ok) throw new Error("Errore nella risposta");
+
+        const todos = await response.json();
+        return todos; // Questo ritorna i dati all'interno della funzione async
+      } catch (error) {
+        console.error("Errore API:", error);
+        return null;
+      }
+    }
+
+
 
     // Aggiunta con il tasto Invio
     inputNome.addEventListener("keydown", function (e) {
