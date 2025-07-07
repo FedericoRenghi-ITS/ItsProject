@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Esempio Tailwind - Demo per studenti</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <header class="bg-blue-600 text-white p-4">
+    <h1 class="text-2xl font-bold text-center">Tailwind CSS</h1>
+  </header>
+
+  <main class="max-w-4xl mx-auto mt-8 p-6 bg-white rounded-xl shadow-md space-y-12">
+
+    <!-- 1. Padding e Margin -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-semibold text-gray-800">1. Padding e Margin</h2>
+      <p class="font-mono bg-gray-200 inline-block px-2 py-1 rounded">class="p-4 m-4 bg-yellow-100"</p>
+      <div class="p-4 m-4 bg-yellow-100 rounded">Box con padding e margin</div>
+    </section>
+
+    <!-- 2. Display Flex -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-semibold text-gray-800">2. Display Flex</h2>
+      <p class="font-mono bg-gray-200 inline-block px-2 py-1 rounded">class="flex gap-4"</p>
+      <div class="flex gap-4">
+        <div class="bg-blue-200 p-4 rounded">Elemento 1</div>
+        <div class="bg-blue-300 p-4 rounded">Elemento 2</div>
+      </div>
+    </section>
+
+    <!-- 3. Display Grid -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-semibold text-gray-800">3. Display Grid</h2>
+      <p class="font-mono bg-gray-200 inline-block px-2 py-1 rounded">class="grid grid-cols-3 gap-2"</p>
+      <div class="grid grid-cols-3 gap-2">
+        <div class="bg-green-200 p-4 rounded text-center">1</div>
+        <div class="bg-green-300 p-4 rounded text-center">2</div>
+        <div class="bg-green-400 p-4 rounded text-center">3</div>
+      </div>
+    </section>
+
+    <!-- 4. Tipografia -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-semibold text-gray-800">4. Tipografia</h2>
+      <p class="font-mono bg-gray-200 inline-block px-2 py-1 rounded">class="text-xl font-bold text-red-500"</p>
+      <p class="text-xl font-bold text-red-500">Testo evidenziato con Tailwind</p>
+    </section>
+
+    <!-- 5. Bottoni -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-semibold text-gray-800">5. Bottoni</h2>
+      <p class="font-mono bg-gray-200 inline-block px-2 py-1 rounded">class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"</p>
+      <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Cliccami</button>
+    </section>
+
+    <!-- 6. Form Input -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-semibold text-gray-800">6. Form Input</h2>
+      <p class="font-mono bg-gray-200 inline-block px-2 py-1 rounded">class="border border-gray-300 rounded px-3 py-2"</p>
+      <input type="text" placeholder="Inserisci qualcosa..." class="border border-gray-300 rounded px-3 py-2 w-full mt-2">
+    </section>
+
+    <!-- 7. Colori di Sfondo -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-semibold text-gray-800">7. Colori di Sfondo</h2>
+      <p class="font-mono bg-gray-200 inline-block px-2 py-1 rounded">class="bg-pink-200"</p>
+      <div class="bg-pink-200 p-4 rounded">Sfondo rosa chiaro</div>
+    </section>
+
+    <!-- 8. Responsive Text -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-semibold text-gray-800">8. Responsive Text</h2>
+      <p class="font-mono bg-gray-200 inline-block px-2 py-1 rounded">class="text-base md:text-xl lg:text-2xl"</p>
+      <p class="text-base md:text-xl lg:text-2xl">Testo che cambia dimensione a seconda dello schermo</p>
+    </section>
+
+    <!-- 9. Ombre -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-semibold text-gray-800">9. Ombre</h2>
+      <p class="font-mono bg-gray-200 inline-block px-2 py-1 rounded">class="shadow-lg"</p>
+      <div class="bg-white p-4 rounded shadow-lg">Box con ombra visibile</div>
+    </section>
+
+    <!-- 10. Border Radius -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-semibold text-gray-800">10. Bordi arrotondati</h2>
+      <p class="font-mono bg-gray-200 inline-block px-2 py-1 rounded">class="rounded-full"</p>
+      <div class="w-20 h-20 bg-purple-400 rounded-full mx-auto"></div>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-sm text-gray-500 mt-10 p-4">
+    &copy; 2025 - Demo Tailwind
+  </footer>
+
+</body>
+</html>
